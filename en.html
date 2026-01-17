@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>세금 계산기 | funnyfunny.cloud</title>
+    <title>Tax Calculator | funnyfunny.cloud</title>
     <meta
       name="description"
-      content="직장인/프리랜서/개인사업자 세금·보험·경비를 간편하게 추정하고, 월 실수령액과 세금 납부 시기를 확인하세요."
+      content="Estimate taxes, insurance, and expenses for employees, freelancers, and self-employed individuals. Check your monthly take-home pay and tax payment schedule."
     />
 
-    <!-- OG (영어 + 띄어쓰기 '+' 규칙) -->
+    <!-- OG -->
     <meta property="og:title" content="TAX+CLICK+CALCULATOR" />
     <meta
       property="og:description"
@@ -21,7 +21,7 @@
       content="https://dummyimage.com/1200x630/0b1220/ffffff&text=TAX+CLICK+CALCULATOR"
     />
 
-    <!-- Favicon (SVG data URI: 단일파일) -->
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/svg+xml"
@@ -53,8 +53,7 @@
       }
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-          "Noto Sans KR", Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
         background: var(--bg);
         color: var(--text);
       }
@@ -580,44 +579,44 @@
         <div class="brand">
           <div class="brand-badge">FF</div>
           <div>
-            <div style="font-weight: 900">세금 계산기</div>
-            <div class="tiny">직장인 · 프리랜서 · 개인사업자</div>
+            <div style="font-weight: 900">Tax Calculator</div>
+            <div class="tiny">Employee · Freelancer · Self-employed</div>
           </div>
         </div>
         <div class="top-actions">
-          <button class="btn ghost" id="btnReset">초기화</button>
-          <a class="btn ghost" href="./en.html">English</a>
+          <button class="btn ghost" id="btnReset">Reset</button>
+          <a class="btn ghost" href="./index.html">한국어</a>
           <a
             class="btn"
             href="https://funnyfunny.cloud"
             target="_blank"
             rel="noopener"
-            >다른 서비스 보기</a
+            >View Other Services</a
           >
         </div>
       </header>
 
       <section class="intro">
-        <h1>세금, 간단하게 계산해보세요</h1>
+        <h1>Calculate your taxes easily</h1>
         <p class="sub">
-          정확한 신고용 계산이 아니라, <b>"실제 수령액과 세금 납부 시기"</b>를
-          파악하는 추정 도구입니다.<br />
-          한 번 입력하면 <b>월 실수령액</b>과
-          <b>세금 납부 시기(큰 금액이 나가는 달)</b>를 확인할 수 있습니다.
+          This is not an exact filing calculation, but an estimation tool to
+          understand <b>"your actual take-home pay and tax payment schedule"</b>.<br />
+          Enter your information once to see your <b>monthly take-home pay</b> and
+          <b>tax payment schedule (months with large payments)</b>.
         </p>
 
         <div class="mode-row" id="modeRow">
           <button class="mode" data-mode="employee" type="button">
-            <p class="t">👔 직장인</p>
-            <p class="d">세전 월급 → 세금+4대보험 추정 → 체감 실수령</p>
+            <p class="t">👔 Employee</p>
+            <p class="d">Gross salary → Tax+Insurance estimate → Net take-home</p>
           </button>
           <button class="mode" data-mode="freelancer" type="button">
-            <p class="t">💻 프리랜서/N잡</p>
-            <p class="d">3.3%는 “끝”이 아니라 “예고편”일 수 있어요</p>
+            <p class="t">💻 Freelancer/Side Job</p>
+            <p class="d">3.3% may be a "preview" rather than the "final" amount</p>
           </button>
           <button class="mode" data-mode="business" type="button">
-            <p class="t">🏪 개인사업자</p>
-            <p class="d">부가세·종소세 “한 번에 크게” 대비하는 구조</p>
+            <p class="t">🏪 Self-employed</p>
+            <p class="d">Prepare for VAT and income tax "big waves"</p>
           </button>
         </div>
       </section>
@@ -625,34 +624,31 @@
       <div class="grid">
         <section class="panel" id="inputPanel">
           <h2>
-            입력
-            <span class="pill" id="modePill">모드 선택</span>
+            Input
+            <span class="pill" id="modePill">Select Mode</span>
           </h2>
           <p class="hint" id="modeHint">
-            위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.
+            Select a mode above to see only the necessary input fields.
           </p>
 
           <div class="fields" id="fieldsArea"></div>
 
           <div class="actions">
-            <button class="btn primary" id="btnCalc">계산하기</button>
-            <button class="btn" id="btnCopySummary">요약 복사</button>
-            <button class="btn" id="btnSave">입력 저장</button>
+            <button class="btn primary" id="btnCalc">Calculate</button>
+            <button class="btn" id="btnCopySummary">Copy Summary</button>
+            <button class="btn" id="btnSave">Save Input</button>
           </div>
 
           <div class="note" id="disclaimer">
-            <b>중요:</b> 이 결과는 참고용 추정치입니다. 공제/업종/증빙/가입 형태
-            등에 따라 실제와 달라질 수 있어요.
+            <b>Important:</b> These results are reference estimates. Actual amounts may vary depending on deductions, industry, documentation, and enrollment type.
             <div class="divider"></div>
-            그래도 이 화면 하나만으로
-            <b>“얼마가 왜 빠지는지 / 언제 크게 나갈지”</b> 감각을 잡는 게
-            목표입니다.
+            The goal is to get a sense of <b>"how much and why money goes out / when large payments occur"</b> from this single screen.
           </div>
 
           <div class="result" id="resultSection">
             <div class="main-num">
               <div class="k">
-                월 실수령액 (추정)
+                Monthly Take-home (Estimate)
                 <button
                   class="tooltip-btn"
                   data-tooltip="netIncome"
@@ -661,9 +657,9 @@
                   ⓘ
                 </button>
               </div>
-              <div class="v"><span id="netAmount">0</span>원</div>
+              <div class="v">₩<span id="netAmount">0</span></div>
               <div class="s">
-                추정치 · 설정에 따라 달라질 수 있어요
+                Estimate · May vary by settings
                 <button
                   class="tooltip-btn"
                   data-tooltip="estimate"
@@ -677,18 +673,18 @@
             <div class="cards">
               <div class="card">
                 <div class="ct">
-                  돈의 흐름
+                  Money Flow
                   <button class="tooltip-btn" data-tooltip="flow" type="button">
                     ⓘ
                   </button>
                 </div>
                 <div class="kv">
-                  <span>들어온 돈</span><strong id="grossAmount">0원</strong>
+                  <span>Income</span><strong id="grossAmount">₩0</strong>
                 </div>
                 <div class="bar"><div id="outBar"></div></div>
                 <div class="kv">
-                  <span>빠진 돈 (세금·보험·경비)</span
-                  ><strong id="outAmount">0원</strong>
+                  <span>Deductions (Tax·Insurance·Expenses)</span
+                  ><strong id="outAmount">₩0</strong>
                 </div>
                 <div class="divider"></div>
                 <div class="tiny muted" id="outBreakdown">-</div>
@@ -696,7 +692,7 @@
 
               <div class="card">
                 <div class="ct">
-                  세금 파도 예상
+                  Tax Wave Forecast
                   <button
                     class="tooltip-btn"
                     data-tooltip="taxWave"
@@ -707,8 +703,7 @@
                 </div>
                 <ul class="wave" id="waveList"></ul>
                 <div class="reserve" id="reserveBox">
-                  매달 <b id="reserveAmount">0원</b> 정도 “세금 통장”에 따로
-                  모아두면 안전해요.
+                  It's safe to set aside about <b id="reserveAmount">₩0</b> per month in a separate "tax account".
                 </div>
               </div>
             </div>
@@ -717,31 +712,30 @@
               class="actions"
               style="margin-top: 12px; justify-content: center"
             >
-              <button class="btn primary" id="btnRecalc">다시 계산</button>
+              <button class="btn primary" id="btnRecalc">Recalculate</button>
             </div>
           </div>
         </section>
 
         <aside class="mini">
-          <h3>초보자용 한 줄 사전</h3>
+          <h3>Beginner's Quick Guide</h3>
           <ul>
             <li>
-              <b>3.3%</b>: 최종 세금이 아니라 <b>미리 떼는 돈</b>일 수 있어요.
+              <b>3.3%</b>: This may be <b>withheld in advance</b>, not the final tax amount.
             </li>
             <li>
-              <b>부가세</b>: 내 돈이 아니라 <b>대신 보관했다가</b> 내는
-              구조(환급도 가능).
+              <b>VAT</b>: You <b>temporarily hold</b> tax collected from customers, then pay it (refunds are possible).
             </li>
             <li>
-              <b>종합소득세</b>: 보통 <b>1년에 한 번 크게</b> 정산될 수 있어요.
+              <b>Income Tax</b>: Usually settled <b>once a year in a large payment</b>.
             </li>
             <li>
-              <b>핵심</b>: 정확도보다 <b>돈 흐름 + 타이밍</b>을 보는 도구예요.
+              <b>Key Point</b>: This tool focuses on <b>cash flow + timing</b> rather than accuracy.
             </li>
           </ul>
           <div class="divider"></div>
           <div class="tiny muted">
-            저장은 브라우저(로컬)에만 됩니다. 서버로 전송하지 않습니다.
+            Data is saved only in your browser (local). It is not sent to any server.
           </div>
         </aside>
       </div>
@@ -755,12 +749,12 @@
             href="https://funnyfunny.cloud"
             target="_blank"
             rel="noopener"
-            >다른 서비스 보기</a
+            >View Other Services</a
           >
-          <a class="btn ghost" href="./en.html">English</a>
+          <a class="btn ghost" href="./index.html">한국어</a>
           <span class="tiny">© funnyfunny.cloud</span>
         </div>
-        <div class="tiny">· 본 결과는 대략적인 추정치입니다</div>
+        <div class="tiny">· Results are approximate estimates</div>
       </div>
     </div>
 
@@ -770,20 +764,20 @@
       role="tooltip"
       aria-hidden="true"
     ></div>
-    <div id="toast" class="toast">복사했어요</div>
+    <div id="toast" class="toast">Copied</div>
 
     <script>
       // -----------------------------
-      // Tooltips (결과 납득/안심용)
+      // Tooltips
       // -----------------------------
       const TOOLTIPS = {
         netIncome:
-          "세금, 보험, 경비를 제외한 실제로 사용 가능한 금액입니다. 공제 및 업종에 따라 실제 결과와 다를 수 있습니다.",
+          "The amount you can actually use after excluding taxes, insurance, and expenses. Actual results may vary depending on deductions and industry.",
         estimate:
-          "공제 항목, 업종, 증빙 방식, 가입 형태 등에 따라 실제 납부액과 다를 수 있습니다. 정확한 계산은 세무 전문가와 상담하시기 바랍니다.",
-        flow: "총 수입에서 세금, 보험, 경비가 어떻게 차감되는지 한눈에 확인할 수 있습니다.",
+          "Actual payment amounts may differ depending on deduction items, industry, documentation method, enrollment type, etc. Please consult with a tax professional for accurate calculations.",
+        flow: "See at a glance how taxes, insurance, and expenses are deducted from total income.",
         taxWave:
-          "사업자와 프리랜서는 특정 시기에 세금이 한꺼번에 납부되는 경우가 있습니다. 미리 준비하면 부담을 줄일 수 있습니다.",
+          "Business owners and freelancers may have periods when taxes are paid in large amounts. Preparing in advance can reduce the burden.",
       };
 
       // -----------------------------
@@ -802,7 +796,7 @@
 
       function fmt(n) {
         if (!isFinite(n)) return "0";
-        return Math.round(n).toLocaleString("ko-KR");
+        return Math.round(n).toLocaleString("en-US");
       }
       function toNumber(val) {
         if (val === null || val === undefined) return 0;
@@ -814,7 +808,7 @@
         return Math.max(a, Math.min(b, n));
       }
 
-      function toast(msg = "완료되었습니다") {
+      function toast(msg = "Done") {
         const t = $("toast");
         t.textContent = msg;
         t.classList.add("show");
@@ -824,7 +818,7 @@
       async function copyText(text) {
         try {
           await navigator.clipboard.writeText(text);
-          toast("복사되었습니다");
+          toast("Copied");
         } catch {
           // fallback
           const ta = document.createElement("textarea");
@@ -833,7 +827,7 @@
           ta.select();
           document.execCommand("copy");
           document.body.removeChild(ta);
-          toast("복사되었습니다");
+          toast("Copied");
         }
       }
 
@@ -857,21 +851,21 @@
         const pill = $("modePill");
         const hint = $("modeHint");
         if (mode === "employee") {
-          pill.textContent = "👔 직장인";
+          pill.textContent = "👔 Employee";
           hint.textContent =
-            "세전 월급 기준으로 세금+4대보험을 단순 추정해서 “체감 실수령”을 보여줘요.";
+            "Simple estimate of tax+4 insurances based on gross monthly salary to show 'net take-home'.";
         } else if (mode === "freelancer") {
-          pill.textContent = "💻 프리랜서/N잡";
+          pill.textContent = "💻 Freelancer/Side Job";
           hint.textContent =
-            "수입/경비 비율을 기반으로 3.3% 원천징수는 ‘미리 낸 돈’으로 보고 정산 감각을 보여줘요.";
+            "Based on income/expense ratio, treat 3.3% withholding as 'prepaid money' to show settlement sense.";
         } else if (mode === "business") {
-          pill.textContent = "🏪 개인사업자";
+          pill.textContent = "🏪 Self-employed";
           hint.textContent =
-            "월 매출/경비로 순이익을 추정하고, 부가세/종소세 ‘파도’를 대비하는 그림을 보여줘요.";
+            "Estimate net profit from monthly sales/expenses and show preparation for VAT/income tax 'waves'.";
         } else {
-          pill.textContent = "모드 선택";
+          pill.textContent = "Select Mode";
           hint.textContent =
-            "위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.";
+            "Select a mode above to see only the necessary input fields.";
         }
 
         renderFields();
@@ -959,15 +953,15 @@
 
         let html = "";
         if (!state.mode) {
-          area.innerHTML = `<div class="note">먼저 상단에서 <b>모드</b>를 선택해 주세요.</div>`;
+          area.innerHTML = `<div class="note">Please select a <b>mode</b> from above first.</div>`;
           return;
         }
 
         if (state.mode === "employee") {
           html += fieldText({
             key: "salary",
-            label: "세전 월급(원)",
-            placeholder: "예: 3,500,000",
+            label: "Gross Monthly Salary (₩)",
+            placeholder: "e.g. 3,500,000",
             tooltip: "estimate",
             defaultValue: saved.salary ?? "",
           });
@@ -975,7 +969,7 @@
             `<div class="row2">` +
             fieldSelect({
               key: "dependents",
-              label: "부양가족 수(선택)",
+              label: "Dependents (Optional)",
               options: [
                 { value: 0, label: "0" },
                 { value: 1, label: "1" },
@@ -986,29 +980,29 @@
             }) +
             fieldSelect({
               key: "deductionLevel",
-              label: "연말정산 공제(선택)",
+              label: "Year-end Deduction (Optional)",
               tooltip: "estimate",
               options: [
-                { value: "low", label: "거의 없음" },
-                { value: "mid", label: "평균" },
-                { value: "high", label: "많이 받는 편" },
+                { value: "low", label: "Almost none" },
+                { value: "mid", label: "Average" },
+                { value: "high", label: "High" },
               ],
               defaultValue: saved.deductionLevel ?? "mid",
             }) +
             `</div>`;
 
           html += `<div class="note">
-          <b>직장인 포인트</b><br/>
-          매달 월급에서 자동으로 빠지는 건 주로 <b>소득세(지방세 포함) + 4대보험</b>이에요.<br/>
-          연말정산은 “나중에 정산”이라 환급/추가납부가 생길 수 있어요.
+          <b>Employee Point</b><br/>
+          What's automatically deducted from monthly salary is mainly <b>income tax (including local tax) + 4 insurances</b>.<br/>
+          Year-end settlement is "settled later", so refunds or additional payments may occur.
         </div>`;
         }
 
         if (state.mode === "freelancer") {
           html += fieldText({
             key: "income",
-            label: "월 평균 수입(원)",
-            placeholder: "예: 4,000,000",
+            label: "Average Monthly Income (₩)",
+            placeholder: "e.g. 4,000,000",
             tooltip: "estimate",
             defaultValue: saved.income ?? "",
           });
@@ -1016,7 +1010,7 @@
             `<div class="row2">` +
             fieldSelect({
               key: "expenseRate",
-              label: "경비 비율(%)",
+              label: "Expense Ratio (%)",
               tooltip: "flow",
               options: [
                 { value: 10, label: "10%" },
@@ -1031,36 +1025,36 @@
             }) +
             fieldSegment({
               key: "withholding",
-              label: "3.3% 떼고 받나요?",
+              label: "Is 3.3% withheld?",
               tooltip: "taxWave",
               items: [
-                { value: "yes", label: "예" },
-                { value: "no", label: "아니오" },
-                { value: "unknown", label: "모르겠음" },
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" },
+                { value: "unknown", label: "Unknown" },
               ],
               defaultValue: saved.withholding ?? "yes",
             }) +
             `</div>`;
 
           html += `<div class="note">
-          <b>프리랜서 포인트</b><br/>
-          <b>3.3%</b>는 최종 세금이 아니라 <b>미리 떼는 돈(원천징수)</b>일 수 있어요.<br/>
-          실제 세금은 보통 다음 해에 정산될 수 있고, 경비/공제에 따라 환급도 가능해요.
+          <b>Freelancer Point</b><br/>
+          <b>3.3%</b> may not be the final tax but <b>money withheld in advance (withholding tax)</b>.<br/>
+          Actual tax is usually settled the following year, and refunds are possible depending on expenses/deductions.
         </div>`;
         }
 
         if (state.mode === "business") {
           html += fieldText({
             key: "sales",
-            label: "월 매출(원)",
-            placeholder: "예: 10,000,000",
+            label: "Monthly Sales (₩)",
+            placeholder: "e.g. 10,000,000",
             tooltip: "flow",
             defaultValue: saved.sales ?? "",
           });
           html += fieldText({
             key: "cost",
-            label: "월 경비(원)",
-            placeholder: "예: 6,000,000",
+            label: "Monthly Expenses (₩)",
+            placeholder: "e.g. 6,000,000",
             tooltip: "flow",
             defaultValue: saved.cost ?? "",
           });
@@ -1069,32 +1063,32 @@
             `<div class="row2">` +
             fieldSegment({
               key: "vatType",
-              label: "업종(부가세)",
+              label: "Industry (VAT)",
               tooltip: "taxWave",
               items: [
-                { value: "taxable", label: "과세" },
-                { value: "exempt", label: "면세" },
-                { value: "unknown", label: "모르겠음" },
+                { value: "taxable", label: "Taxable" },
+                { value: "exempt", label: "Exempt" },
+                { value: "unknown", label: "Unknown" },
               ],
               defaultValue: saved.vatType ?? "taxable",
             }) +
             fieldSegment({
               key: "vatScheme",
-              label: "부가세 방식",
+              label: "VAT Scheme",
               tooltip: "taxWave",
               items: [
-                { value: "general", label: "일반" },
-                { value: "simple", label: "간이" },
-                { value: "unknown", label: "모르겠음" },
+                { value: "general", label: "General" },
+                { value: "simple", label: "Simple" },
+                { value: "unknown", label: "Unknown" },
               ],
               defaultValue: saved.vatScheme ?? "general",
             }) +
             `</div>`;
 
           html += `<div class="note">
-          <b>사업자 포인트</b><br/>
-          부가세는 고객에게 받은 세금을 <b>잠깐 보관했다가</b> 내는 구조예요(환급도 가능).<br/>
-          종합소득세는 보통 <b>1년에 한 번 크게</b> 나갈 수 있어서 “세금 통장”이 유용해요.
+          <b>Business Owner Point</b><br/>
+          VAT is a structure where you <b>temporarily hold</b> tax collected from customers, then pay it (refunds are possible).<br/>
+          Income tax usually goes out <b>once a year in a large payment</b>, so a "tax account" is useful.
         </div>`;
         }
 
@@ -1120,7 +1114,7 @@
               inp.value = "";
               return;
             }
-            inp.value = Number(raw).toLocaleString("ko-KR");
+            inp.value = Number(raw).toLocaleString("en-US");
           });
         });
       }
@@ -1159,9 +1153,9 @@
       }
 
       // -----------------------------
-      // Approx Tax Model (간단 추정)
-      // - 법/세율 정확 계산이 목적이 아님
-      // - "감각"과 "돈 흐름"이 목표
+      // Approx Tax Model
+      // - Not for exact legal/tax rate calculation
+      // - Goal is "sense" and "cash flow"
       // -----------------------------
       function employeeModel({ salary, dependents, deductionLevel }) {
         const gross = salary;
@@ -1197,8 +1191,8 @@
 
         // wave schedule (employee: no big wave, but annual settlement)
         const waves = [
-          { month: "2~3월", label: "연말정산 정산(환급/추가)", strong: true },
-          { month: "매달", label: "소득세·4대보험 자동 공제", strong: false },
+          { month: "Feb~Mar", label: "Year-end settlement (Refund/Additional)", strong: true },
+          { month: "Monthly", label: "Income tax·4 insurances auto deduction", strong: false },
         ];
 
         // reserve suggestion: small buffer for potential additional payment
@@ -1209,8 +1203,8 @@
           out,
           net,
           breakdown: {
-            "소득세(지방세 포함, 추정)": incomeTax,
-            "4대보험(추정)": insurance,
+            "Income tax (incl. local tax, est.)": incomeTax,
+            "4 insurances (est.)": insurance,
           },
           waves,
           reserve,
@@ -1252,13 +1246,13 @@
 
         const waves = [
           {
-            month: "5월",
-            label: "종합소득세 정산(추가납부/환급)",
+            month: "May",
+            label: "Income tax settlement (Additional/Refund)",
             strong: true,
           },
           {
-            month: "매달",
-            label: "경비 + (원천징수/세금 적립) 관리",
+            month: "Monthly",
+            label: "Expenses + (Withholding/Tax reserve) management",
             strong: false,
           },
         ];
@@ -1273,8 +1267,8 @@
           out,
           net,
           breakdown: {
-            "경비(추정)": expense,
-            "세금 적립(추정)": predictedTax,
+            "Expenses (est.)": expense,
+            "Tax reserve (est.)": predictedTax,
           },
           waves,
           reserve,
@@ -1318,33 +1312,33 @@
         // VAT wave
         if (isTaxable) {
           waves.push({
-            month: "1월/7월",
-            label: "부가세 신고·납부(대략)",
+            month: "Jan/Jul",
+            label: "VAT filing·payment (approx.)",
             strong: true,
           });
         } else {
           waves.push({
             month: "-",
-            label: "면세 업종은 부가세 부담이 다를 수 있어요",
+            label: "Exempt industries may have different VAT burden",
             strong: false,
           });
         }
         // Income tax wave
         waves.push({
-          month: "5월",
-          label: "종합소득세(큰 파도)",
+          month: "May",
+          label: "Income tax (big wave)",
           strong: true,
         });
-        waves.push({ month: "11월", label: "중간예납 가능성", strong: false });
+        waves.push({ month: "Nov", label: "Interim payment possibility", strong: false });
 
         const reserve = Math.round(incomeTaxReserve + vatReserve);
 
         const breakdown = {
-          "경비(추정)": expense,
-          "세금 적립(종소세, 추정)": incomeTaxReserve,
+          "Expenses (est.)": expense,
+          "Tax reserve (income tax, est.)": incomeTaxReserve,
         };
         if (isTaxable) {
-          breakdown["부가세 적립(추정)"] = vatReserve;
+          breakdown["VAT reserve (est.)"] = vatReserve;
         }
 
         return { gross, out, net, breakdown, waves, reserve };
@@ -1368,21 +1362,21 @@
         state.result = res;
 
         $("netAmount").textContent = fmt(res.net);
-        $("grossAmount").textContent = fmt(res.gross) + "원";
-        $("outAmount").textContent = fmt(res.out) + "원";
+        $("grossAmount").textContent = "₩" + fmt(res.gross);
+        $("outAmount").textContent = "₩" + fmt(res.out);
 
         const outPct = res.gross > 0 ? res.out / res.gross : 0;
         $("outBar").style.width =
           (clamp(outPct, 0, 0.95) * 100).toFixed(1) + "%";
 
         const lines = Object.entries(res.breakdown).map(([k, v]) => {
-          return `• ${k}: ${fmt(v)}원`;
+          return `• ${k}: ₩${fmt(v)}`;
         });
 
         // extra info (freelancer: prepaid)
         if (state.mode === "freelancer" && res.extra?.prepaid) {
           lines.push(
-            `• (참고) 이미 떼고 받은 3.3% 추정: ${fmt(res.extra.prepaid)}원`
+            `• (Note) Already withheld 3.3% estimate: ₩${fmt(res.extra.prepaid)}`
           );
         }
 
@@ -1397,7 +1391,7 @@
           ul.appendChild(li);
         });
 
-        $("reserveAmount").textContent = fmt(res.reserve) + "원";
+        $("reserveAmount").textContent = "₩" + fmt(res.reserve);
 
         $("resultSection").classList.add("show");
         $("resultSection").scrollIntoView({
@@ -1409,14 +1403,14 @@
       // -----------------------------
       // Save/Load (local only)
       // -----------------------------
-      const STORAGE_KEY = "ff_tax_click_v1";
+      const STORAGE_KEY = "ff_tax_click_v1_en";
 
       function saveInput() {
         if (!state.mode) return;
         const input = readInput();
         const payload = { mode: state.mode, input };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-        toast("저장되었습니다");
+        toast("Saved");
       }
 
       function loadSavedInput() {
@@ -1446,7 +1440,7 @@
             if (obj.mode === "employee") {
               if ($("salary"))
                 $("salary").value = input.salary
-                  ? Number(input.salary).toLocaleString("ko-KR")
+                  ? Number(input.salary).toLocaleString("en-US")
                   : "";
               if ($("dependents"))
                 $("dependents").value = String(input.dependents ?? 0);
@@ -1456,7 +1450,7 @@
             if (obj.mode === "freelancer") {
               if ($("income"))
                 $("income").value = input.income
-                  ? Number(input.income).toLocaleString("ko-KR")
+                  ? Number(input.income).toLocaleString("en-US")
                   : "";
               if ($("expenseRate"))
                 $("expenseRate").value = String(input.expenseRate ?? 30);
@@ -1474,11 +1468,11 @@
             if (obj.mode === "business") {
               if ($("sales"))
                 $("sales").value = input.sales
-                  ? Number(input.sales).toLocaleString("ko-KR")
+                  ? Number(input.sales).toLocaleString("en-US")
                   : "";
               if ($("cost"))
                 $("cost").value = input.cost
-                  ? Number(input.cost).toLocaleString("ko-KR")
+                  ? Number(input.cost).toLocaleString("en-US")
                   : "";
               const vatType = input.vatType ?? "taxable";
               const vatScheme = input.vatScheme ?? "general";
@@ -1506,12 +1500,12 @@
       // -----------------------------
       $("btnCalc").addEventListener("click", () => {
         if (!state.mode) {
-          toast("모드를 먼저 선택해주세요");
+          toast("Please select a mode first");
           return;
         }
         const res = calculate();
         if (!res) {
-          toast("필수 항목을 입력해주세요");
+          toast("Please enter required fields");
           return;
         }
         renderResult(res);
@@ -1524,7 +1518,7 @@
 
       $("btnSave").addEventListener("click", () => {
         if (!state.mode) {
-          toast("모드를 먼저 선택해주세요");
+          toast("Please select a mode first");
           return;
         }
         saveInput();
@@ -1532,7 +1526,7 @@
 
       $("btnCopySummary").addEventListener("click", () => {
         if (!state.mode) {
-          copyText("세금 계산기 - 모드를 선택하고 입력해 보세요.");
+          copyText("Tax Calculator - Please select a mode and enter information.");
           return;
         }
         const input = readInput();
@@ -1541,39 +1535,39 @@
 
         const modeName =
           state.mode === "employee"
-            ? "직장인"
+            ? "Employee"
             : state.mode === "freelancer"
-            ? "프리랜서/N잡"
-            : "개인사업자";
+            ? "Freelancer/Side Job"
+            : "Self-employed";
 
-        let text = `세금 계산기 (${modeName})\n`;
+        let text = `Tax Calculator (${modeName})\n`;
 
         if (state.mode === "employee") {
-          text += `- 세전 월급: ${fmt(input.salary)}원\n- 부양가족: ${
+          text += `- Gross monthly salary: ₩${fmt(input.salary)}\n- Dependents: ${
             input.dependents
-          }\n- 공제: ${input.deductionLevel}\n`;
+          }\n- Deduction: ${input.deductionLevel}\n`;
         }
         if (state.mode === "freelancer") {
-          text += `- 월 수입: ${fmt(input.income)}원\n- 경비 비율: ${
+          text += `- Monthly income: ₩${fmt(input.income)}\n- Expense ratio: ${
             input.expenseRate
           }%\n- 3.3%: ${input.withholding}\n`;
         }
         if (state.mode === "business") {
-          text += `- 월 매출: ${fmt(input.sales)}원\n- 월 경비: ${fmt(
+          text += `- Monthly sales: ₩${fmt(input.sales)}\n- Monthly expenses: ₩${fmt(
             input.cost
-          )}원\n- 업종(부가세): ${input.vatType}\n- 부가세 방식: ${
+          )}\n- Industry (VAT): ${input.vatType}\n- VAT scheme: ${
             input.vatScheme
           }\n`;
         }
 
         if (res) {
-          text += `\n[결과(추정)]\n- 들어온 돈: ${fmt(
+          text += `\n[Result (Estimate)]\n- Income: ₩${fmt(
             res.gross
-          )}원\n- 빠진 돈: ${fmt(res.out)}원\n- 실수령액: ${fmt(
+          )}\n- Deductions: ₩${fmt(res.out)}\n- Take-home: ₩${fmt(
             res.net
-          )}원\n- 세금 통장 추천: ${fmt(res.reserve)}원/월\n`;
+          )}\n- Tax account recommendation: ₩${fmt(res.reserve)}/month\n`;
         } else {
-          text += `\n(결과는 '계산하기' 후 확인)\n`;
+          text += `\n(Results available after clicking 'Calculate')\n`;
         }
 
         text += `\nhttps://funnyfunny.cloud`;
@@ -1585,14 +1579,14 @@
         state.input = {};
         state.result = {};
         modeButtons.forEach((b) => b.classList.remove("active"));
-        $("modePill").textContent = "모드 선택";
+        $("modePill").textContent = "Select Mode";
         $("modeHint").textContent =
-          "위에서 모드를 선택하면 필요한 입력만 딱 나오게 바뀝니다.";
+          "Select a mode above to see only the necessary input fields.";
         $(
           "fieldsArea"
-        ).innerHTML = `<div class="note">먼저 상단에서 <b>모드</b>를 선택해 주세요.</div>`;
+        ).innerHTML = `<div class="note">Please select a <b>mode</b> from above first.</div>`;
         $("resultSection").classList.remove("show");
-        toast("초기화!");
+        toast("Reset!");
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
@@ -1605,7 +1599,7 @@
         const btn = e.target.closest(".tooltip-btn");
         if (btn) {
           const key = btn.dataset.tooltip;
-          const text = TOOLTIPS[key] || "설명 준비중";
+          const text = TOOLTIPS[key] || "Description coming soon";
           tipLayer.textContent = text;
 
           const rect = btn.getBoundingClientRect();
